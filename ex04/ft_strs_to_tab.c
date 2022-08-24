@@ -6,11 +6,11 @@
 /*   By: aantonio <aantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:23:35 by aantonio          #+#    #+#             */
-/*   Updated: 2022/08/24 16:21:32 by aantonio         ###   ########.fr       */
+/*   Updated: 2022/08/24 16:44:39 by aantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stock_str.h"
+// #include "ft_stock_str.h"
 
 int	ft_strlen(char *str)
 {
@@ -34,9 +34,10 @@ void	ft_copy_str(char *dest, char *src)
 		dest[i] = src[i];
 		i++;
 	}
+	dest[i] = 0;
 }
 
-int	validate_input(int ac, char **av)
+int	input_is_valid(int ac, char **av)
 {
 	int	i;
 
@@ -69,8 +70,8 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 	{
 		size = ft_strlen(av[i]);
 		converted_strs[i].size = size;
-		converted_strs[i].str = malloc(sizeof(char) * size);
-		converted_strs[i].copy = malloc(sizeof(char) * size);
+		converted_strs[i].str = malloc(sizeof(char) * (size + 1));
+		converted_strs[i].copy = malloc(sizeof(char) * (size + 1));
 		ft_copy_str(converted_strs[i].str, av[i]);
 		ft_copy_str(converted_strs[i].copy, av[i]);
 		i++;
