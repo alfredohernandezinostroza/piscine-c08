@@ -6,7 +6,7 @@
 /*   By: aantonio <aantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:23:35 by aantonio          #+#    #+#             */
-/*   Updated: 2022/08/24 16:08:36 by aantonio         ###   ########.fr       */
+/*   Updated: 2022/08/24 16:21:32 by aantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	validate_input(int ac, char **av)
 
 struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 {
-	char				**strings;
 	struct s_stock_str	*converted_strs;
 	int					i;
 	int					size;
@@ -62,7 +61,9 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 	if (!input_is_valid(ac, av))
 		return (0);
 	converted_strs = malloc(sizeof(t_stock_str) * (ac + 1));
-	strings[ac] = 0;
+	converted_strs[ac].size = 0;
+	converted_strs[ac].str = 0;
+	converted_strs[ac].copy = 0;
 	i = 0;
 	while (i < ac)
 	{
@@ -74,5 +75,5 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 		ft_copy_str(converted_strs[i].copy, av[i]);
 		i++;
 	}
-	return (strings);
+	return (converted_strs);
 }
